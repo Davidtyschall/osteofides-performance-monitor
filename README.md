@@ -1,12 +1,28 @@
 # Osteofides Performance Monitor
 
-A course prototype dashboard for reviewing simulated safety-system events across autonomous surgical procedure cases. It represents the downstream monitoring and analytics layer around Osteofides. It does not connect to a robot, detect hazards, or ingest clinical telemetry.
+A course prototype dashboard for reviewing simulated safety-system events across autonomous surgical procedure cases. It represents the downstream monitoring and analytics layer around Osteofides. It does not connect to a robot, detect hazards, or ingest clinical telemetry. This is a sub-application to the overarching product development of a Stryker Robotics funded project within an Engineering Design course series at Florida Atlantic University, 2026. 
+
+## About
+
+A performance-monitoring dashboard for clinicians and robotic engineers to review how the Osteofides safety system performed across multiple surgical cases. The underlying safety system audits procedural activity, detects and logs safety-relevant events, and records its responses. Those records are then aggregated into the dashboard so users can analyze performance over time, inspect individual events, and identify trends or recurring failure modes.
 
 **All included records are synthetic. Do not enter patient information or use this prototype for clinical decisions.**
 
-- **Live application:** _Pending deployment_
+- **Live application:** osteofides-performance-monitor.netlify.app
 - **Public GitHub repository:** _Pending repository creation_
 - **Unlisted demo video:** _Pending recording_
+
+## Data Flow
+
+Surgical procedure → Osteofides safety system → event/performance logs → database → analytics dashboard.
+
+## Data Output
+
+TOTAL CASES          
+SAFETY EVENTS        
+HIGH-SEVERITY        
+SUCCESSFUL RESPONSE  
+ACTIVE EVENTS 
 
 ## Features
 
@@ -40,11 +56,6 @@ Then open <http://localhost:8000>. The app opens with simulated demo records. Ch
 
 ## Connect Supabase
 
-1. Create a free Supabase project.
-2. In its SQL Editor, run [`supabase/schema.sql`](supabase/schema.sql). This creates the `safety_events` table, row-level-security policies, and three synthetic seed events.
-3. In Supabase Project Settings → API, copy the Project URL and the anon/publishable key. **Never use a service-role key in the browser.**
-4. In `config.js`, set `supabaseUrl` and `supabasePublishableKey` to those values. This makes a fresh visitor's browser connect automatically after deployment. Alternatively, use **Data connection** in one browser for a local-only connection test.
-5. Run the app locally and confirm that the connection badge says **Supabase connected**. Create, edit, resolve/reopen, and delete a test event, then refresh and verify cloud persistence.
 
 The assignment prototype intentionally allows anonymous CRUD so the synthetic-data workflow is easy to demonstrate. Anyone with the deployed app can access data allowed by these policies. Use only synthetic records. A real clinical or production system would require authentication, user-specific authorization, security review, audit controls, and a different deployment model.
 
@@ -70,23 +81,3 @@ To return to browser-only data, choose **Use local demo data** in Data connectio
 - [ ] Search and filter the log; confirm aggregate metrics still describe all loaded events.
 - [ ] Export a filtered CSV.
 - [ ] In connected mode, refresh and confirm changes persisted in Supabase.
-
-## 3–5 minute demo outline
-
-1. **0:00–0:30 — Purpose:** Introduce Osteofides Performance Monitor as a prototype analytics layer and state that the records are synthetic.
-2. **0:30–1:10 — Dashboard:** Show case/event totals, severity count, response percentage, event patterns, and open-event status.
-3. **1:10–2:25 — CRUD:** Record a test event, edit it, resolve and reopen it, then delete it. Show the dashboard metrics and filtered log responding.
-4. **2:25–3:10 — Database:** In Supabase, show the `safety_events` table and the test record changes. Return to the deployed app and refresh to demonstrate persistence.
-5. **3:10–4:15 — Code walkthrough:** Show `index.html`, `styles.css`, `app.js`, and `supabase/schema.sql`. Explain the table contract, row-level security choices, and why local demo mode is separate from connected mode.
-6. **4:15–4:30 — Close:** Restate the prototype boundary and where the app could fit in the larger safety-system workflow.
-
-Record against the deployed URL, not localhost, and set YouTube visibility to **Unlisted** before adding its link above.
-- [ ] Deploy the completed app and use the deployed URL in the 3–5 minute demo video.
-
-## Assignment deliverables still to complete
-
-- Publish this project in a **public GitHub repository** with meaningful commits.
-- Deploy the finished app (Netlify is suggested in the assignment).
-- Record an **unlisted 3–5 minute YouTube demo** of the deployed app, database CRUD, and project structure; link it here.
-
-These external account actions require the owner's GitHub, Supabase, Netlify, and YouTube accounts. The source and database setup are prepared here; add the final repository, deployment, and video links after publishing.
