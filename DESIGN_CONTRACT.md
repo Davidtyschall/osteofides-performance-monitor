@@ -8,7 +8,7 @@ This is a course prototype of the **monitoring and analytics interface** around 
 
 **Input:** a simulated safety-event record associated with a procedure case.
 
-**Authoritative state:** the configured Supabase `public.safety_events` table. Until Supabase is configured, browser local storage is the explicitly labeled demo store.
+**Authoritative state:** the Supabase `public.safety_events` table when `config.js` contains the project URL and publishable key or the current browser has been connected manually. If neither is configured, browser local storage is the explicitly labeled demo store.
 
 **Output:** a filterable event log and metrics derived from the records currently loaded from that store.
 
@@ -24,14 +24,14 @@ This is a course prototype of the **monitoring and analytics interface** around 
 
 ## Acceptance checks
 
-1. App opens in demo mode and clearly identifies the records as synthetic.
+1. With blank `config.js` and no saved browser connection, the app opens in demo mode and clearly identifies the records as synthetic.
 2. Create a valid event; it appears in the log and changes the relevant metrics.
 3. Edit the event; updated values appear after reload.
 4. Resolve and reopen the event; active/resolved counts and resolution rate respond.
 5. Delete the event; it disappears and the counts update.
 6. Search and severity/status filters narrow the visible rows without changing aggregate totals.
 7. Export produces a CSV of the currently filtered rows.
-8. With valid Supabase setup, the same CRUD actions operate on the `safety_events` table. With invalid setup, an explicit connection error is shown.
+8. With valid Supabase setup in `config.js`, a fresh browser automatically connects and the same CRUD actions operate on the `safety_events` table. With invalid setup, an explicit connection error is shown.
 
 ## Deliberate limits
 

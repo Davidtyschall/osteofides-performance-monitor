@@ -15,6 +15,12 @@ const $$ = (selector) => [...document.querySelectorAll(selector)];
 
 function safeRead(key, fallback) { try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; } catch { return fallback; } }
 function safeWrite(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { showToast("Could not save in this browser."); return false; } }
+function configuredSettings() {
+  const config = globalThis.OSTEOFIDES_CONFIG || {};
+  const url = String(config.supabaseUrl || "").trim().replace(/\/$/, "");
+  const key = String(config.supabasePublishableKey || config.supabaseAnonKey || "").trim();
+  return url && key ? { url, key } : null;
+}
 function isConnected() { return Boolean(state.settings?.url && state.settings?.key); }
 function uuid() { return globalThis.crypto?.randomUUID?.() || `evt-${Date.now()}-${Math.random().toString(16).slice(2,8)}`; }
 
@@ -201,7 +207,7 @@ function exportCSV() {
 }
 
 function init() {
-  state.settings = safeRead(STORAGE_KEYS.settings, null);
+  state.settings = configuredSettings() || safeRead(STORAGE_KEYS.settings, null);
   $("#new-event").addEventListener("click", () => { resetForm(); openModal("event-modal"); });
   $("#empty-new-event").addEventListener("click", () => { resetForm(); openModal("event-modal"); });
   $("#open-settings").addEventListener("click", openSettings); $("#open-settings-top").addEventListener("click", openSettings);

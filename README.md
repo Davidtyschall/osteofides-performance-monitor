@@ -43,10 +43,10 @@ Then open <http://localhost:8000>. The app opens with simulated demo records. Ch
 1. Create a free Supabase project.
 2. In its SQL Editor, run [`supabase/schema.sql`](supabase/schema.sql). This creates the `safety_events` table, row-level-security policies, and three synthetic seed events.
 3. In Supabase Project Settings → API, copy the Project URL and the anon/publishable key. **Never use a service-role key in the browser.**
-4. In the dashboard, select **Data connection** and enter those two values.
-5. Confirm that the connection badge says **Supabase connected**, then create, edit, resolve/reopen, and delete a test event. Refresh the page to verify cloud persistence.
+4. In `config.js`, set `supabaseUrl` and `supabasePublishableKey` to those values. This makes a fresh visitor's browser connect automatically after deployment. Alternatively, use **Data connection** in one browser for a local-only connection test.
+5. Run the app locally and confirm that the connection badge says **Supabase connected**. Create, edit, resolve/reopen, and delete a test event, then refresh and verify cloud persistence.
 
-The assignment prototype intentionally allows anonymous CRUD so the synthetic-data workflow is easy to demonstrate. Anyone with the project URL and anon key can access data allowed by these policies. Use only synthetic records. A real clinical or production system would require authentication, user-specific authorization, security review, audit controls, and a different deployment model.
+The assignment prototype intentionally allows anonymous CRUD so the synthetic-data workflow is easy to demonstrate. Anyone with the deployed app can access data allowed by these policies. Use only synthetic records. A real clinical or production system would require authentication, user-specific authorization, security review, audit controls, and a different deployment model.
 
 To return to browser-only data, choose **Use local demo data** in Data connection.
 
@@ -57,6 +57,7 @@ To return to browser-only data, choose **Use local demo data** in Data connectio
 ├── index.html              # Application structure and dialogs
 ├── styles.css              # Responsive visual system
 ├── app.js                  # State, rendering, CRUD, filters, export, and Supabase REST calls
+├── config.js               # Public Supabase URL and publishable key for fresh visitors
 ├── supabase/schema.sql     # Table, constraints, RLS policies, and synthetic seed data
 └── DESIGN_CONTRACT.md      # Product boundary, invariants, and acceptance checks
 ```
