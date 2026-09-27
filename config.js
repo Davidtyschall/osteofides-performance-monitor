@@ -2,6 +2,6 @@
 // connects to the shared Supabase project automatically. Only use the project's
 // publishable key (or legacy anon key), never a secret/service-role key.
 window.OSTEOFIDES_CONFIG = {
-  supabaseUrl: "",
-  supabasePublishableKey: ""
+  supabaseUrl: "https://jxmlrizadsrbljgmeeei.supabase.co",
+  supabasePublishableKey: "sb_publishable_gQqUt3F7z2oyIEJkpuzReQ_ljVtVFDT"
 };
