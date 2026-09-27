@@ -4,6 +4,10 @@ A course prototype dashboard for reviewing simulated safety-system events across
 
 **All included records are synthetic. Do not enter patient information or use this prototype for clinical decisions.**
 
+- **Live application:** _Pending deployment_
+- **Public GitHub repository:** _Pending repository creation_
+- **Unlisted demo video:** _Pending recording_
+
 ## Features
 
 - Summary of procedure cases, safety events, high-severity events, successful responses, and open/resolved events
@@ -65,6 +69,17 @@ To return to browser-only data, choose **Use local demo data** in Data connectio
 - [ ] Search and filter the log; confirm aggregate metrics still describe all loaded events.
 - [ ] Export a filtered CSV.
 - [ ] In connected mode, refresh and confirm changes persisted in Supabase.
+
+## 3–5 minute demo outline
+
+1. **0:00–0:30 — Purpose:** Introduce Osteofides Performance Monitor as a prototype analytics layer and state that the records are synthetic.
+2. **0:30–1:10 — Dashboard:** Show case/event totals, severity count, response percentage, event patterns, and open-event status.
+3. **1:10–2:25 — CRUD:** Record a test event, edit it, resolve and reopen it, then delete it. Show the dashboard metrics and filtered log responding.
+4. **2:25–3:10 — Database:** In Supabase, show the `safety_events` table and the test record changes. Return to the deployed app and refresh to demonstrate persistence.
+5. **3:10–4:15 — Code walkthrough:** Show `index.html`, `styles.css`, `app.js`, and `supabase/schema.sql`. Explain the table contract, row-level security choices, and why local demo mode is separate from connected mode.
+6. **4:15–4:30 — Close:** Restate the prototype boundary and where the app could fit in the larger safety-system workflow.
+
+Record against the deployed URL, not localhost, and set YouTube visibility to **Unlisted** before adding its link above.
 - [ ] Deploy the completed app and use the deployed URL in the 3–5 minute demo video.
 
 ## Assignment deliverables still to complete
