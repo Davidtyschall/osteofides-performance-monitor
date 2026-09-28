@@ -9,8 +9,8 @@ A performance-monitoring dashboard for clinicians and robotic engineers to revie
 **All included records are synthetic. Do not enter patient information or use this prototype for clinical decisions.**
 
 - **Live application:** osteofides-performance-monitor.netlify.app
-- **Public GitHub repository:** _Pending repository creation_
-- **Unlisted demo video:** _Pending recording_
+- **Public GitHub repository:** https://github.com/Davidtyschall/osteofides-performance-monitor
+- **Unlisted demo video:** https://www.youtube.com/watch?v=NUEoTkIAVv8
 
 ## Data Flow
 
